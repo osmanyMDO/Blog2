@@ -1,0 +1,167 @@
+<apex:page sidebar="false" controller="BlogEditPostController">
+      <style type="text/css">
+
+        .owner{
+            font-weight: bold;
+        }
+
+        .banner{
+            background-color:#5E5252;
+            color: white;            
+            height: 100%;
+            margin-top: -10px;
+            margin-left: -10px;
+            margin-right: 2px;
+            padding-left: 64px;
+            padding-top: 25px;
+            width: 100%;
+        }
+
+        .containerEdit{
+            margin-left: 64px;
+            margin-top: 30px;
+            width: 660px;
+        }
+
+        .continue{
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .date{            
+            color: #4f4f4f;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .banner a:visited {text-decoration:none;}
+		.banner a:hover {text-decoration:none; color:white;} 
+		
+		.home{            
+            color:white;            
+            font-size: 14px; 
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        .img{
+            display: inline-block;
+            float:left;
+            height: 100px;
+            margin-right: 20px;            
+            width: 120px;
+        }
+
+        .link {
+            color:#0071bc;
+            text-decoration: none;
+        }
+
+        .limit{            
+            border-bottom: 1px solid #4f4f4f;            
+            width: 100%;
+        }
+
+        .newPost{
+            font-size: 14px;            
+            margin-top: 40px;            
+        }
+
+        .oktana{
+            font-size: 72px;
+            font-weight: 100;
+            margin-top: 20px;
+            margin-bottom: 25px;
+        }
+
+        .text{
+            color: #4f4f4f;
+            float:left;
+            font-size: 14px; 
+            font-weight: 100; 
+            display: inline-block;          
+         }
+
+         .title{
+            color:#0071bc;            
+            font-size: 28px;
+            font-weight: 100;
+            margin-bottom: 14px;
+            margin-top: 55px;
+            text-decoration: none;
+         }
+         
+         .editorContainer{
+            margin-left: 64px;
+            margin-top: 30px;
+            width: 660px;
+            border:solid 2px #0071bc;
+            padding:20px;
+            border-radius: 6px;
+         
+         }
+         
+         .titleForm{
+		    font-size: 28px;
+		    width: 100%;
+		    border: none;
+		    color:#333; 
+         }
+         
+         .titleForm:focus{
+		    font-size: 28px;
+		    width: 100%;
+		    border: none;
+		    color:#333; 
+         }         
+         
+          .descriptionForm{
+		    font-size: 14px;
+		    width: 100%;
+		    border: none;
+		    color:#333;
+		    margin-top:30px; 
+		    margin-bottom: 30px;
+         }
+         
+         .btnSave{
+         	float:rigth;
+         }
+
+      </style>    
+      
+            <div class="banner">                    
+                    <apex:outputLink value="{! $Page.BlogHome}" styleClass="home"> Home </apex:outputLink>        
+                   <p class="oktana">Oktana's Blog</p>
+            </div>
+            
+		    
+		     <apex:pagemessages />
+		    
+		  <div class="editorContainer">
+		  		<apex:form >
+		                          
+		                <apex:inputText styleClass="titleForm" value="{! postt.Title__c }"/><br/>        
+		                <apex:inputTextarea styleClass="descriptionForm" value="{! postt.Description__c }"/><br/> 
+		                <apex:inputTextarea richText="true" value="{! postt.Post_body__c }"/><br/> 
+		                <apex:inputField styleClass="descriptionForm" value="{! postt.Tag__c }"/><br/> 
+		                
+		                <hr/>
+
+		                <apex:commandButton styleClass="btnSave" action="{! save }" value="Save" /> 
+		            
+		            </apex:form>		  
+	  
+		  </div> 
+		  <div class="containerEdit">  
+		  <p class="title">Today</p>
+		  <apex:outputText styleClass="date" >{! TODAY() }</apex:outputText>
+		  </div>
+
+		  
+		  
+
+
+</apex:page>

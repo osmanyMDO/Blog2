@@ -1,0 +1,111 @@
+<apex:page controller="BlogAdminPostController" sidebar="false" >
+      <style type="text/css">
+
+        .blog_banner{
+            background-color:#5E5252;
+            color: white;            
+            height: 100%;
+            margin-top: -10px;
+            margin-left: -10px;
+            margin-right: 2px;
+            padding-left: 64px;
+            padding-top: 25px;
+            width: 100%;
+        }
+
+        .container{
+            margin-left: 64px;
+            width: 660px;
+        }
+
+        .blog_banner a:visited {text-decoration:none;}
+		.blog_banner a:hover {text-decoration:none; color:white;} 
+		
+		.blog_home{            
+            color:white;            
+            font-size: 14px; 
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        .blog_link {
+            color:#0071bc;
+            text-decoration: none;
+        }
+
+        .newPost{
+            font-size: 14px;            
+            margin-top: 40px;            
+        }
+
+        .blog_oktana{
+            font-size: 72px;
+            font-weight: 100;
+            margin-top: 20px;
+            margin-bottom: 25px;
+        }
+
+
+      </style>
+            <div class="blog_banner">                    
+                    <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
+                   <p class="blog_oktana">Oktana's Blog</p>
+            </div>
+
+		     <apex:pagemessages />
+
+            <div class="container">
+                <div class="newPost">
+                    <apex:outputLink value="{! $Page.BlogCreatePost}" styleClass="blog_link">
+                    Created a new post
+                    </apex:outputLink>                    
+                </div>
+			<div>
+                <p style="font-size:20px;">
+                 Post list
+                 </p>
+            </div>
+
+        <table class="list" style="width:600px;font-size:15px;">
+            <thead class="rich-table-thead">
+                <tr class="headerRow">
+                    <th class="headerRow" scope="col" colspan="1">
+                    	<div>Action</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1">
+                   		<div>Title</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1">
+                    	<div>Owner</div>
+                    </th>
+                    <th class="headerRow" scope="col" colspan="1">
+                    	<div>Created date</div>
+                    </th>
+                </tr> 
+            </thead>
+            
+            <!-- Repeat-->
+            <apex:repeat value="{! posts }" var="postO">
+            
+            	<tr class="dataRow odd">
+            		<td class="dataCell" colspan="1">
+		                <apex:outputLink value="{! $Page.BlogEditPost}" styleClass="blog_link"> 
+		                   	<apex:param name="postID" value="{! postO.ID}"/> Edit
+		                </apex:outputLink> |
+		                <apex:outputLink value="{! $Page.BlogDeletePostTemp}" styleClass="blog_link"> 
+		                	<apex:param name="postID" value="{! postO.ID}"/> Del 
+		                </apex:outputLink>
+		            </td>
+		            <td class="dataCell" colspan="1"> 
+		            	<apex:outputLink value="{! $Page.BlogShowPost}" styleClass="blog_link">
+                           	<apex:param name="postID" value="{! postO.ID}"/>{! postO.Title__c}
+                            	</apex:outputLink>
+                    </td>
+		            <td class="dataCell" colspan="1">{! postO.Owner__c}</td>
+		            <td class="dataCell" colspan="1">{! postO.Created_Date__c}</td>	                 
+	             </tr>              
+	         </apex:repeat>     
+	         <!-- END Repeat--> 
+        </table>    
+  </div>
+</apex:page>

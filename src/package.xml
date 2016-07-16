@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>AccountDetail</members>
+        <members>AccountEdit</members>
+        <members>AccountList</members>
+        <members>AccountSummary</members>
+        <members>BlogAdminPost</members>
+        <members>BlogCreatePost</members>
+        <members>BlogEditPost</members>
+        <members>BlogHome</members>
+        <members>BlogShowPost</members>
+        <members>ContactForm</members>
+        <members>ContactList</members>
+        <members>ContactView</members>
+        <members>CreateContact</members>
+        <members>CreatePost</members>
+        <members>DisplayImage</members>
+        <members>DisplayUserInfo</members>
+        <members>FlowPage</members>
+        <members>HelloJQuery</members>
+        <members>HelloWorld</members>
+        <members>Job_Candidate_Help</members>
+        <members>LightningConnectQuickstart</members>
+        <members>NewCaseList</members>
+        <members>NewCustomerFlow</members>
+        <members>OppView</members>
+        <members>ShowImage</members>
+        <members>UserStatus</members>
+        <members>jQueryMobileResources</members>
+        <name>ApexPage</name>
+    </types>
+    <version>36.0</version>
+</Package>

@@ -1,0 +1,159 @@
+<apex:page controller="ShowPostController" sidebar="false">
+
+      <style type="text/css">
+
+        .owner{
+            font-weight: bold;
+        }
+
+        .banner{
+            background-color:#5E5252;
+            color: white;            
+            height: 100%;
+            margin-top: -10px;
+            margin-left: -10px;
+            margin-right: 2px;
+            padding-left: 64px;
+            padding-top: 25px;
+            width: 100%;
+        }
+
+        .container{
+            margin-left: 64px;
+            width: 660px;
+        }
+
+        .continue{
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 50px;
+        }
+
+        .date{            
+            color: #4f4f4f;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .banner a:visited {text-decoration:none;}
+		.banner a:hover {text-decoration:none; color:white;} 
+		
+		.home{            
+            color:white;            
+            font-size: 14px; 
+            font-weight: 400;
+            text-decoration: none;
+        }
+
+        .img{
+            display: inline-block;
+            float:left;
+            height: 100px;
+            margin-bottom: 20px;
+            margin-right: 20px;                        
+            width: 120px;
+        }
+
+        .link {
+            color:#0071bc;
+            text-decoration: none;
+        }
+
+        .limit{            
+            border-bottom: 1px solid #4f4f4f;            
+            width: 100%;
+        }
+
+        .newPost{
+            font-size: 14px;            
+            margin-top: 40px;            
+        }
+
+        .oktana{
+            font-size: 72px;
+            font-weight: 100;
+            margin-top: 20px;
+            margin-bottom: 25px;
+        }
+
+        .text{
+            color: #4f4f4f;
+            font-size: 14px; 
+            font-weight: 100; 
+            line-height: 20px;                  
+         }
+
+         .title{
+            color:#0071bc;            
+            font-size: 28px;
+            font-weight: 100;
+            margin-bottom: 14px;
+            margin-top: 55px;
+            text-decoration: none;
+         }
+         .makeComment{
+            color:#0071bc;            
+            font-size: 20px;
+            font-weight: 100;
+            margin-bottom: 24px;
+            margin-top: 55px;
+            text-decoration: none;
+         
+         }
+
+
+
+
+          
+      </style>
+    
+            <div class="banner">                    
+                    <apex:outputLink value="{! $Page.BlogHome}" styleClass="home"> Home </apex:outputLink>        
+                   <p class="oktana">Oktana's Blog</p>
+            </div>
+    
+            <div class="container">
+            
+                <p class="title"> <apex:outputText >{! post.Title__c}</apex:outputText> </p>
+                
+                <p class="date"> In this article: <apex:outputText >{! post.Tag__c}</apex:outputText> </p>
+                
+                
+                <p><span class="date"><apex:outputText value="">{! post.Created_Date__c}</apex:outputText>
+                    by </span><apex:outputLink value="" styleClass="link owner"> {! post.Owner__c}</apex:outputLink>
+                </p> 
+                    
+                <apex:image url="{! post.Photo__c}"/>
+                
+                <p class="text"><apex:outputText styleClass="text" escape="false">{! post.Post_body__c}</apex:outputText></p>
+                
+                <div class="limit"></div>
+                
+                <div>
+                <p class="title"> Comments:</p>
+                
+	                <!-- Repeat-->
+	                <apex:repeat value="{! post.Comments__r }" var="comment">
+
+	                		 <apex:outputText styleClass="text" escape="false">{! comment.Owner__c}</apex:outputText> :
+	                		 <p class="text"><apex:outputText styleClass="text" escape="false">{! comment.Body__c}</apex:outputText></p>
+	           	                   
+	                
+	                </apex:repeat>     
+	
+	                <!-- END Repeat--> 
+	                
+	                 <div class="limit"></div>
+                
+                </div>
+                
+                <div>               
+				<span class="makeComment">Make a comment</span> <br/>
+					<input type="text"/><br/>
+					<button>Send</button>
+			       
+                </div>
+
+            </div>
+</apex:page>
