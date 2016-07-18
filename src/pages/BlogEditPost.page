@@ -137,7 +137,6 @@
                    <p class="oktana">Oktana's Blog</p>
             </div>
             
-		    
 		     <apex:pagemessages />
 		    
 		  <div class="editorContainer">

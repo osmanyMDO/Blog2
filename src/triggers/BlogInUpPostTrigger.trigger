@@ -46,12 +46,11 @@ trigger BlogInUpPostTrigger on Post__c (after insert, after update) {
 }
 
 
-
-
-
-
 /*
+
+
 DUDA
+
 trigger SoqlTriggerNotBulk on Account(after update) {   
     for(Account a : Trigger.New) {
         Opportunity[] opps = [SELECT Id,Name,CloseDate 
@@ -66,4 +65,5 @@ trigger SoqlTriggerBulk on Account(after update) {
           // Do some other processing
     }
 }
+
  */

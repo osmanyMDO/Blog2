@@ -1,4 +1,4 @@
-<apex:page controller="CreatePostController" sidebar="false">
+<apex:page controller="BlogCreatePostController" sidebar="false">
 
       <style type="text/css">
 
@@ -168,6 +168,5 @@
 		  <p class="title">Today</p>
 		  <apex:outputText styleClass="date" >{! TODAY() }</apex:outputText>
 		  </div>
-		  
-		  
+
 </apex:page>
