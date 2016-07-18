@@ -32,7 +32,6 @@
         <members>ParkLocatorTest</members>
         <members>ParkService</members>
         <members>ParkServiceMock</members>
-        <members>ShowPostController</members>
         <members>StringArrayTest</members>
         <members>TemperatureConverter</members>
         <members>TemperatureConverterTest</members>
@@ -44,8 +43,49 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>AccountEdit</members>
+        <members>AccountList</members>
+        <members>AccountSummary</members>
+        <members>BlogAdminPost</members>
+        <members>BlogCreatePost</members>
+        <members>BlogEditPost</members>
+        <members>BlogHome</members>
+        <members>BlogShowPost</members>
+        <members>ContactForm</members>
+        <members>ContactList</members>
+        <members>ContactView</members>
+        <members>CreateContact</members>
+        <members>DisplayImage</members>
+        <members>DisplayUserInfo</members>
+        <members>FlowPage</members>
+        <members>HelloJQuery</members>
+        <members>HelloWorld</members>
+        <members>Job_Candidate_Help</members>
+        <members>LightningConnectQuickstart</members>
+        <members>NewCaseList</members>
+        <members>NewCustomerFlow</members>
+        <members>OppView</members>
+        <members>ShowImage</members>
+        <members>UserStatus</members>
+        <members>jQueryMobileResources</members>
+        <name>ApexPage</name>
+    </types>
+    <types>
+        <members>AccountAddressTrigger</members>
+        <members>AccountDeletion</members>
         <members>BlogInUpPostTrigger</members>
+        <members>ClosedOpportunityTrigger</members>
+        <members>HelloWorldTrigger</members>
         <name>ApexTrigger</name>
+    </types>
+    <types>
+        <members>*</members>
+        <members>GetAnimalResource</members>
+        <members>JQuery</members>
+        <members>SLDS202</members>
+        <members>jQueryMobile</members>
+        <members>vfimagetest</members>
+        <name>StaticResource</name>
     </types>
     <version>36.0</version>
 </Package>

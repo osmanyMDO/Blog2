@@ -1,133 +1,39 @@
 <apex:page controller="BlogHomeController" sidebar="false" >
-      <style type="text/css">
-
-        .banner a:visited {text-decoration:none;}
-		.banner a:hover {text-decoration:none; color:white;} 
-		
-		.home{            
-            color:white;            
-            font-size: 14px; 
-            font-weight: 400;
-            text-decoration: none;
-        }
-        
-        .owner{
-            font-weight: bold;
-        }
-
-        .banner{
-            background-color:#5E5252;
-            color: white;            
-            height: 100%;
-            margin-top: -10px;
-            margin-left: -10px;
-            margin-right: 2px;
-            padding-left: 64px;
-            padding-top: 25px;
-            width: 100%;
-        }
-
-        .container{
-            margin-left: 64px;
-            width: 660px;
-        }
-
-        .continue{
-            font-size: 12px;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 50px;
-        }
-
-        .date{            
-            color: #4f4f4f;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        .img{
-            display: inline-block;
-            float:left;
-            height: 100px;
-            margin-bottom: 20px;
-            margin-right: 20px;                        
-            width: 120px;
-        }
-
-        .link {
-            color:#0071bc;
-            text-decoration: none;
-        }
-
-        .limit{            
-            border-bottom: 1px solid #4f4f4f;            
-            width: 100%;
-        }
-
-        .newPost{
-            font-size: 14px;            
-            margin-top: 40px;            
-        }
-
-        .oktana{
-            font-size: 72px;
-            font-weight: 100;
-            margin-top: 20px;
-            margin-bottom: 25px;
-        }
-
-        .text{
-            color: #4f4f4f;
-            font-size: 14px; 
-            font-weight: 100; 
-            line-height: 20px;                  
-         }
-
-         .title{
-            color:#0071bc;            
-            font-size: 28px;
-            font-weight: 100;
-            margin-bottom: 14px;
-            margin-top: 55px;
-            text-decoration: none;
-         }
-
-          
-      </style>
-            <div class="banner">                    
-                    <apex:outputLink value="{! $Page.BlogHome}" styleClass="home"> Home </apex:outputLink>        
-                   <p class="oktana">Oktana's Blog</p>
-            </div>
-            <div class="container">
-                <div class="newPost">
-                    <apex:outputLink value="{! $Page.BlogCreatePost}" styleClass="link">
+    <apex:stylesheet value="{! URLFOR($Resource.Blog_style) }"/>
+        <div class="blog_banner">
+            <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
+                <p class="blog_oktana">Oktana's Blog</p>
+        </div>
+        <div class="blog_container">
+            <div class="blog_newPost">
+                    <apex:outputLink value="{! $Page.BlogCreatePost}" styleClass="blog_link">
                     Created a new post
                     </apex:outputLink>                    
                 </div>
                 <!-- Repeat-->
                 <apex:repeat value="{! posts }" var="postO">
-                    <p class="title">
-                        <apex:outputLink value="{! $Page.BlogShowPost}" styleClass="link">
+                    <p class="blog_title">
+                        <apex:outputLink value="{! $Page.BlogShowPost}" styleClass="blog_link">
                             <apex:param name="postID" value="{! postO.ID}"/>
                                 {! postO.Title__c}
                             </apex:outputLink>
                     </p>
                     <p>
-                    	<span class="date"><apex:outputText value="">{! postO.Created_Date__c}</apex:outputText>
-                    		by </span><apex:outputLink value="/{! postO.CreatedById}" styleClass="link owner"> {! postO.Owner__c}</apex:outputLink>
+                    	<span class="blog_date"><apex:outputText value="">{! postO.Created_Date__c}</apex:outputText>
+                    		by </span><apex:outputLink value="/{! postO.CreatedById}" styleClass="blog_link blog_owner"> {! postO.Owner__c}</apex:outputLink>
                      </p> 
                     
-                    <apex:image styleClass="img" url="{! postO.Photo__c}"/>
-                    <div><p class="text"><apex:outputText value="" >{! postO.Description__c}</apex:outputText></p> </div>
+                    <apex:image styleClass="blog_img" url="{! postO.Photo__c}"/>
+                    <div><p class="blog_text"><apex:outputText value="" >{! postO.Description__c}</apex:outputText></p> </div>
 
-                    <div class="continue">
-                        <apex:outputLink value="{! $Page.BlogShowPost}" styleClass="link">
+                    <div class="blog_continue">
+                        <apex:outputLink value="{! $Page.BlogShowPost}" styleClass="blog_link">
                             <apex:param name="postID" value="{! postO.ID}"/>
                             CONTINUE READING
                         </apex:outputLink>
                     </div>
 
-                    <div class="limit"></div>
+                    <div class="blog_limit"></div>
                 </apex:repeat>     
                 <!-- END Repeat-->         
             </div>
