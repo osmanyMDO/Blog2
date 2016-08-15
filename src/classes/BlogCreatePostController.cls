@@ -9,6 +9,6 @@ public class BlogCreatePostController {
 
     public PageReference Save() {
         insert postt;
-        return New Pagereference('/'+postt.id);
+        return New Pagereference('/apex/BlogHome');
     } 
 }
