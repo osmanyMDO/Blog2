@@ -9,13 +9,16 @@ trigger BlogInUpPostTrigger on Post__c (after insert, after update) {
     Map<Id,List<String>> mapPostListTagNameIn = new Map<Id,List<String>>();
     
     for(Post__c post : Trigger.New) {
+        
         if(Trigger.isInsert && String.isNotBlank(post.Tag__c)) {
             mapPostListTagNameIn.put(post.Id, post.Tag__c.split(','));
         } 
+        
         if(Trigger.isUpdate) {
             Post__c pOld = Trigger.oldMap.get(post.Id);
             if(pOld.Tag__c != post.Tag__c) {
                 if(String.isBlank(post.Tag__c)){
+                    //post Id to delete all tags associated
                     idPostDelJo.add(post.Id);
                 } else {
                     mapPostListTagNameUp.put(post.Id, new Set<String>(post.Tag__c.split(',')));
@@ -79,7 +82,7 @@ trigger BlogInUpPostTrigger on Post__c (after insert, after update) {
             for(String tagUpName : mapPostListTagNameUp.get(postId)) {
                 if( mapNameTags.get(tagUpName) == null){//el tags no existe
                     if((mapIdPostListNameTags.get(postId) != null && !mapIdPostListNameTags.get(postId).contains(tagUpName) ) || 
-                       //si el mapa no es null y no contiene el tags que viene en la actualizacion
+                       //si el mapa no es null y no contiene el tags que viene en la actualización
                        mapIdPostListNameTags.get(postId) == null) { //El post no tiene Tags asociadas
                            Tag__c tNew = new Tag__c(Name__c = tagUpName);
                            listTagsInsert.add(tNew);
