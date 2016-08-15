@@ -1,66 +1,61 @@
-<apex:page controller="BlogAdminPostController" sidebar="false" >
-    
-    <apex:stylesheet value="{! URLFOR($Resource.Blog_style) }"/>
-    
-            <div class="blog_banner">                    
-                    <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
-                   <p class="blog_oktana">Oktana's Blog</p>
-            </div>
-
-		     <apex:pagemessages />
-
-            <div class="blog_container">
-                <div class="blog_newPost">
-                    <apex:outputLink value="{! $Page.BlogCreatePost}" styleClass="blog_link">
-                    Created a new post
-                    </apex:outputLink>                    
-                </div>
-			<div>
-                <p style="font-size:20px;">
-                 Post list
-                 </p>
-            </div>
-
+<apex:page controller="BlogAdminPostController" sidebar="false" > 
+    <apex:stylesheet value="{! URLFOR($Resource.Blog_style) }"/>    
+    <div class="blog_banner">                    
+        <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
+        <p class="blog_oktana">Oktana's Blog</p>
+    </div>    
+    <apex:pagemessages />    
+    <div class="blog_container">
+        <div class="blog_newPost">
+            <apex:outputLink value="{! $Page.BlogCreatePost}" styleClass="blog_link">
+                Created a new post
+            </apex:outputLink>                    
+        </div>
+        <div>
+            <p style="font-size:20px;">
+                Post list
+            </p>
+        </div>        
         <table class="list" style="width:600px;font-size:16px;">
             <thead class="rich-table-thead">
                 <tr class="headerRow">
                     <th class="headerRow" scope="col" colspan="1">
-                    	<div>Action</div>
+                        <div>Action</div>
                     </th>
                     <th class="headerRow" scope="col" colspan="1">
-                   		<div>Title</div>
+                        <div>Title</div>
                     </th>
                     <th class="headerRow" scope="col" colspan="1">
-                    	<div>Owner</div>
+                        <div>Owner</div>
                     </th>
                     <th class="headerRow" scope="col" colspan="1">
-                    	<div>Created date</div>
+                        <div>Created date</div>
                     </th>
                 </tr> 
             </thead>
             
             <!-- Repeat-->
             <apex:repeat value="{! posts }" var="postO">
-            
-            	<tr class="dataRow odd">
-            		<td class="dataCell" colspan="1">
-		                <apex:outputLink value="{! $Page.BlogEditPost}" styleClass="blog_link"> 
-		                   	<apex:param name="postID" value="{! postO.ID}"/> Edit
-		                </apex:outputLink> |
-		                <apex:outputLink value="{! $Page.BlogDeletePostTemp}" styleClass="blog_link"> 
-		                	<apex:param name="postID" value="{! postO.ID}"/> Del 
-		                </apex:outputLink>
-		            </td>
-		            <td class="dataCell" colspan="1"> 
-		            	<apex:outputLink value="{! $Page.BlogShowPost}" styleClass="blog_link">
-                           	<apex:param name="postID" value="{! postO.ID}"/>{! postO.Title__c}
-                            	</apex:outputLink>
+                
+                <tr class="dataRow odd">
+                    <td class="dataCell" colspan="1">
+                        <apex:outputLink value="{! $Page.BlogEditPost}" styleClass="blog_link"> 
+                            <apex:param name="postID" value="{! postO.ID}"/> Edit
+                        </apex:outputLink> |
+                        <apex:outputLink value="{! $Page.BlogDeletePostTemp}" styleClass="blog_link"> 
+                            <apex:param name="postID" value="{! postO.ID}"/> Del 
+                        </apex:outputLink>
                     </td>
-		            <td class="dataCell" colspan="1">{! postO.Owner__c}</td>
-		            <td class="dataCell" colspan="1">{! postO.Created_Date__c}</td>	                 
-	             </tr>              
-	         </apex:repeat>     
-	         <!-- END Repeat--> 
+                    <td class="dataCell" colspan="1"> 
+                        <apex:outputLink value="{! $Page.BlogShowPost}" styleClass="blog_link">
+                            <apex:param name="postID" value="{! postO.ID}"/>{! postO.Title__c}
+                        </apex:outputLink>
+                    </td>
+                    <td class="dataCell" colspan="1">{! postO.Owner__c}</td>
+                    <td class="dataCell" colspan="1">{! postO.Created_Date__c}</td>	                 
+                </tr>              
+            </apex:repeat>     
+            <!-- END Repeat--> 
         </table>    
-  </div>
+    </div>
 </apex:page>
