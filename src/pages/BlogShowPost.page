@@ -1,36 +1,62 @@
 <apex:page controller="BlogShowPostController" sidebar="false">
     <apex:stylesheet value="{! URLFOR($Resource.Blog_style) }"/>
-        
-        <div class="blog_banner">
-            <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
-                <p class="blog_oktana">Oktana's Blog</p>
-        </div>
-        
-        <div class="blog_container">
-        
-            <p class="blog_title"> <apex:outputText >{! post.Title__c}</apex:outputText> </p> 
-            <p class="blog_date"> In this article: <apex:outputText >{! post.Tag__c}</apex:outputText> </p>
-            <p><span class="blog_date"><apex:outputText value="">{! post.Created_Date__c}</apex:outputText>
-               by </span><apex:outputLink value="" styleClass="blog_link blog_owner"> {! post.Owner__c}</apex:outputLink>
-            </p>                    
-            <apex:image url="{! post.Photo__c}"/>               
-            <p class="blog_text"><apex:outputText styleClass="blog_text" escape="false">{! post.Post_body__c}</apex:outputText></p>  
-            <div class="blog_limit"></div>
-            <div>
-                <p class="blog_title"> Comments:</p>
-                   <!-- Repeat-->
-	               <apex:repeat value="{! post.Comments__r }" var="comment">
-                       <apex:outputText styleClass="blog_text" escape="false">{! comment.Owner__c}</apex:outputText> :
-	                	   <p class="blog_text"><apex:outputText styleClass="blog_text" escape="false">{! comment.Body__c}</apex:outputText></p>
-	                </apex:repeat>     
-	                <!-- END Repeat--> 
-	                <div class="blog_limit"></div>
-              </div>
-              <div>               
-				<span class="blog_makeComment">Make a comment</span> <br/>
-					<input type="text"/><br/>
-					<button>Send</button>
+    <apex:includeScript value="{!$Resource.jquery310}"/>
+    
+    <div class="blog_banner">
+        <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
+        <p class="blog_oktana">Oktana's Blog</p>
+    </div>
+    
+    <div class="blog_container">        
+        <p class="blog_title"> <apex:outputText >{! post.Title__c}</apex:outputText> </p> 
+        <p class="blog_date"> In this article: <span style="color:#048ec6"><apex:outputText >{! post.Tag__c}</apex:outputText></span> </p>
+        <p><span class="blog_date"><apex:outputText value="">{! post.Created_Date__c}</apex:outputText>
+            by </span><apex:outputLink value="" styleClass="blog_link blog_owner"> {! post.Owner__c}</apex:outputLink>
+        </p>                    
+        <div class="blog_imgShowPost"><apex:image url="{! post.Photo__c}"/></div>               
+        <div class="blog_postBody"><p><apex:outputText styleClass="blog_text" escape="false">{! post.Post_body__c}</apex:outputText></p></div>  
+        <div class="blog_limit"></div>
+        <div>
+            <p class="blog_title"> Comments:</p>
+            <!-- Repeat-->
+            <apex:repeat value="{! post.Comments__r }" var="comment">
+                <div class="blog_containerComment">
+                    <div class="blog_commentImg">
+                        <img src="https://developer.salesforce.com/img/userprofile/default_profile_45.png" alt="Author" width="45" height="45" class="cxuserimage" />
+                    </div>
+                    <div class="blog_commentAuthor">
+                        <apex:outputText styleClass="blog_text" escape="false">{! comment.Author__c}</apex:outputText>
+                    </div>
+                    <div class="blog_commentBody">
+                        <apex:outputText styleClass="blog_text" escape="false">{! comment.Body__c}</apex:outputText>
+                    </div>
+                    <div class="blog_commentDate">
+                        <p>{! comment.LastModifiedDate} </p>
+                    </div>
                 </div>
-                
-            </div>
+            </apex:repeat>     
+            <!-- END Repeat--> 
+        </div>
+        <div class="blog_containerComment makeComment">               
+            <apex:form > 
+                <span class="blog_makeComment">MAKE A COMMENT</span> <br/>                 
+                <p>Name <span style="color: red;"> (*)</span></p>
+                <apex:inputText value="{! authorComment }" html-placeholder=" Name..."/><br/> 
+                <p>Comment <span style="color: red;"> (*)</span></p>
+                <apex:inputTextarea value="{! bodyComment }" html-placeholder=" Comment..." rows="8" cols="45" /><br/>                
+                <apex:commandButton action="{!postComment}" value="Send" />
+            </apex:form>
+        </div>
+    </div>
+    
+    <script type="text/javascript">
+    
+    $(document).ready(
+        function(){
+            var tags = '{! post.Tag__c}'.split(",");
+            console.log(tags);
+        });
+    
+    </script>   
+    
 </apex:page>
