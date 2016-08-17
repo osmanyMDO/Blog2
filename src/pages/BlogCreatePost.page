@@ -1,25 +1,21 @@
 <apex:page doctype="html-5.0" controller="BlogCreatePostController" sidebar="false">
-
-    <apex:stylesheet value="{! URLFOR($Resource.Blog_style) }"/> 
-      
-        <div class="blog_banner">
-            <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
-                <p class="blog_oktana">Oktana's Blog</p>
-        </div>
-		    
-	    <div class="blog_editorContainer">
-		    <apex:form >
-		                <apex:inputText styleClass="blog_titleFormEdit" value="{! postt.Title__c }" html-placeholder=" Title of post goes here..."/><br/>        
-		                <apex:inputTextarea styleClass="blog_descriptionFormEdit" value="{! postt.Description__c }" html-placeholder=" Short description (optional) goes here..."/><br/> 
-		                <apex:inputTextarea richText="true" value="{! postt.Post_body__c }" html-placeholder=" Your text goes here..."/><br/> 
-		                <apex:inputField styleClass="blog_descriptionFormEdit" value="{! postt.Tag__c }" html-placeholder=" Tags of post goes here comma separated..."/><br/> 
-		                <hr/>
-		                <apex:commandButton styleClass="blog_btnSaveEdit" action="{! save }" value="Save" /> 
-		    </apex:form>		  
-		  </div> 
-		  <div class="blog_containerEdit">  
-		  <p class="blog_title">Today</p>
-		  <span class="blog_date"><apex:outputText styleClass="blog_date" >{! TODAY() }</apex:outputText></span>
-		  </div>
-
+    <apex:stylesheet value="{! URLFOR($Resource.Blog_style) }"/>      
+    <div class="blog_banner">
+        <apex:outputLink value="{! $Page.BlogHome}" styleClass="blog_home"> Home </apex:outputLink>        
+        <p class="blog_oktana">Oktana's Blog</p>
+    </div>		    
+    <div class="blog_editorContainer">
+        <apex:form >
+            <apex:inputText styleClass="blog_titleFormEdit" value="{! postt.Title__c }" html-placeholder=" Title of post goes here..."/><br/>        
+            <apex:inputTextarea styleClass="blog_descriptionFormEdit" value="{! postt.Description__c }" rows="10" cols="45" html-placeholder=" Short description (optional) goes here..."/><br/> 
+            <apex:inputTextarea richText="true" value="{! postt.Post_body__c }" html-placeholder=" Your text goes here..."/><br/> 
+            <apex:inputField styleClass="blog_descriptionFormEdit" value="{! postt.Tag__c }" html-placeholder=" Tags of post goes here comma separated..."/><br/> 
+            <hr/>
+            <apex:commandButton styleClass="blog_btnSaveEdit" action="{! save }" value="Save" /> 
+        </apex:form>		  
+    </div> 
+    <div class="blog_containerEdit">  
+        <p class="blog_title">Today</p>
+        <span class="blog_date"><apex:outputText styleClass="blog_date" >{! TODAY() }</apex:outputText></span>
+    </div>    
 </apex:page>

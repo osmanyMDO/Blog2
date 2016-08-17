@@ -19,8 +19,8 @@
                             </apex:outputLink>
                     </p>
                     <p>
-                    	<span class="blog_date"><apex:outputText value="">{! postO.Created_Date__c}</apex:outputText>
-                    		by </span><apex:outputLink value="/{! postO.CreatedById}" styleClass="blog_link blog_owner"> {! postO.Owner__c}</apex:outputLink>
+                        <span class="blog_date"><apex:outputText value="">{! postO.Created_Date__c}</apex:outputText>
+                                by </span><apex:outputLink value="/{! postO.CreatedById}" styleClass="blog_link blog_owner"> {! postO.Owner__c}</apex:outputLink>
                      </p> 
                     
                     <apex:image styleClass="blog_img" url="{! postO.Photo__c}"/>

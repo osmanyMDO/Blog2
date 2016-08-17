@@ -120,10 +120,13 @@
 .blog_img {
     display: inline-block;
     float: left;
-    height: 100px;
+    /*height: 100px;*/
     margin-bottom: 20px;
-    margin-right: 20px;                        
-    width: 120px;
+    margin-right: 20px;
+    max-height: 200px;
+    max-width: 120px;
+    /*width: 120px;*/
+    
 }
 
 .blog_imgShowPost {
@@ -175,7 +178,7 @@
 
 .blog_postBody {
     font-size: 14px;
-    line-height: 16px;    
+    line-height: 24px;    
     margin-bottom: 5px;
     margin-top: 2px;
     word-break: break-word;    
@@ -231,7 +234,7 @@
     color: #333;
 }
 
-.makeComment input[type="submit"] {
+input[type="submit"] {
     background: none repeat scroll 0 0 #0071bc;
     color: #fff;
     font-size: 13px;

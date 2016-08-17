@@ -9,7 +9,7 @@
 	    <div class="blog_editorContainer">
 		    <apex:form >
 		                <apex:inputText styleClass="blog_titleFormEdit" value="{! postt.Title__c }"/><br/>        
-		                <apex:inputTextarea styleClass="blog_descriptionFormEdit" value="{! postt.Description__c }"/><br/> 
+		                <apex:inputTextarea styleClass="blog_descriptionFormEdit" value="{! postt.Description__c }" rows="10" cols="45"/><br/> 
 		                <apex:inputTextarea richText="true" value="{! postt.Post_body__c }"/><br/> 
 		                <apex:inputField styleClass="blog_descriptionFormEdit" value="{! postt.Tag__c }"/><br/> 
 		                <hr/>

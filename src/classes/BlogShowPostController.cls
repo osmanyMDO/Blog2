@@ -12,10 +12,8 @@ public class BlogShowPostController {
                  WHERE ID=:pId];          
     }
     
-    public Post__c getPost() { return posts; }  
-    
-    public String getBodyComment() { return bodyComment; }
-    
+    public Post__c getPost() { return posts; }     
+    public String getBodyComment() { return bodyComment; }    
     public String getAuthorComment() { return authorComment; }
     
     public Pagereference postComment() {

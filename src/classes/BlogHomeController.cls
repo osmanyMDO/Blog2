@@ -4,7 +4,7 @@ public class BlogHomeController {
     
     
     public BlogHomeController(){
-        posts = [SELECT ID,Title__c,Description__c, CreatedById, Created_Date__c,Imagen__c, Photo__c, Owner__c FROM Post__c];          
+        posts = [SELECT ID,Title__c,Description__c, CreatedById, Created_Date__c, Imagen__c, Photo__c, Owner__c FROM Post__c ORDER BY Created_Date__c ASC NULLS LAST];          
     }    
     public List<Post__c> getPost(){
         return posts;
